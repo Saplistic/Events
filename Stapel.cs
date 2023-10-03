@@ -12,6 +12,7 @@ namespace Generieke_Collecties
     internal class Stapel<T>
     {
         List<T> container;
+
         //declareer een event die gelinkt is aan de delegate
         public event WijzigingEventHandeler OnWijziging;
 
@@ -23,6 +24,7 @@ namespace Generieke_Collecties
         public void Opzetten(T t) {
             container.Add(t);
 
+            //roep de event op
             OnWijziging?.Invoke(this, "opzetten");
         }
 
