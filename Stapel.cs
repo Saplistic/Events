@@ -23,30 +23,22 @@ namespace Generieke_Collecties
         public void Opzetten(T t) {
             container.Add(t);
 
-            if (OnWijziging != null)
-            {
-                OnWijziging(this, "opzetten");
-            }
+            OnWijziging?.Invoke(this, "opzetten");
         }
 
         public T Afhalen() {
             T item = container[^1];
             container.RemoveAt(container.Count - 1);
 
-            if (OnWijziging != null)
-            {
-                OnWijziging(this, "afhalen");
-            }
+            OnWijziging?.Invoke(this, "afhalen");
+
             return item;
         }
 
         public void Leegmaken() {
             container = new List<T>();
 
-            if (OnWijziging != null)
-            {
-                OnWijziging(this, "leegmaken");
-            }
+            OnWijziging?.Invoke(this, "leegmaken");
         }
 
         public override string ToString()
